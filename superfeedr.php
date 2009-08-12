@@ -8,14 +8,14 @@ class Superfeedr extends XMPPHP_XMPP {
 		$server = $jidarr[1];
 		$user = $jidarr[0];
 		$host = 'xmpp.superfeedr.com';
-		$this->addXPathHandler('{jabber:client}message/{http://jabber.org/protocol/pubsub#event}event/{http://superfeedr.com/xmpp-pubsub-ext}status', handle_superfeedr_msg);
+		$this->addXPathHandler('{jabber:client}message/{http://jabber.org/protocol/pubsub#event}event/{http://superfeedr.com/xmpp-pubsub-ext}status', 'handle_superfeedr_msg');
 		XMPPHP_XMPP::__construct($host, 5222, $user, $password, 'superfeedr', $server, false, XMPPHP_Log::LEVEL_INFO);
-		print $this->jid;
-		print $this->server;
+		print $jid;
+        print $server;
 		$this->connect();
 		$payloads = $this->processUntil(array('session_start', 'end_stream'));
 		foreach($payloads as $event) {
-			$pl = $even[1];
+			$pl = $event[1];
 			switch($event[0]) {
 				case 'session_start':
 				break;
