@@ -25,5 +25,4 @@ print_r($sf->listfeeds());
 print "\n";
 
 $sf->process();
-
 ?>
