@@ -12,8 +12,8 @@ class Superfeedr extends XMPPHP_XMPP {
 		XMPPHP_XMPP::__construct($host, 5222, $user, $password, 'superfeedr', $server, false, XMPPHP_Log::LEVEL_INFO);
 		print $jid;
         print $server;
+        $this->useEncryption(false);
 		$this->connect();
-		$this->useEncryption(false);
 		$payloads = $this->processUntil(array('session_start', 'end_stream'));
 		foreach($payloads as $event) {
 			$pl = $event[1];
