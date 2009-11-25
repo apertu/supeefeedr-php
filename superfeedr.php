@@ -13,6 +13,7 @@ class Superfeedr extends XMPPHP_XMPP {
 		print $jid;
         print $server;
 		$this->connect();
+		$this->useEncryption(false);
 		$payloads = $this->processUntil(array('session_start', 'end_stream'));
 		foreach($payloads as $event) {
 			$pl = $event[1];
